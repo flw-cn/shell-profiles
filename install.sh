@@ -32,9 +32,11 @@ rm -f ~/.vimrc_flw
 ln -s ~/shell-profiles/dot_vimrc_flw ~/.vimrc_flw
 mkdir -p ~/.vim/colors && cp -f flwcolor.vim ~/.vim/colors/
 rm -f ~/.vimrc
-touch ~/.vimrc
-sed -i '/" flw vim script begin/,/" flw vim script end/d' ~/.vimrc && sed -i '1d' ~/.vimrc
-sed -i '1i" flw vim script begin\nif filereadable( expand( "$HOME/.vimrc_flw" ) )\n    source ~/.vimrc_flw\nendif\n" flw vim script end\n' ~/.vimrc
+echo > ~/.vimrc
+sed -i '/" flw vim script begin/,/" flw vim script end/d' ~/.vimrc ~/.vimrc
+sed -i '1i" flw vim script begin\nif filereadable( expand( "$HOME/.vimrc_flw" ) )\n    source ~/.vimrc_flw\nendif\n" flw vim script end' ~/.vimrc
+
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 # }}}
 
 # 安装 screen 配置文件 {{{
