@@ -18,7 +18,10 @@
 # 使用方法
 
 1. 下载本项目
+
     git clone https://github.com/flw-cn/shell-profiles
+
 2. 安装
+
     cd shell-profiles
     ./install.sh
