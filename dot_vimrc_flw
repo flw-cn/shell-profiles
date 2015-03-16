@@ -148,7 +148,7 @@ Plugin 'gabrielelana/vim-markdown'      " 貌似没有 markdown 插件 vimwiki �
 Plugin 'mattn/calendar-vim'
 Plugin 'yegappan/mru'
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'taglist.vim'
+" Plugin 'taglist.vim'
 Plugin 'mbbill/VimExplorer'
 if ( has("unix") ) | Plugin 'nsf/gocode', { 'rtp': 'vim/' } | endif
 Plugin 'ervandew/supertab'
