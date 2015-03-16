@@ -23,5 +23,4 @@
 
 2. 安装
 
-  > cd shell-profiles
-  > ./install.sh
+  > cd shell-profiles; ./install.sh
