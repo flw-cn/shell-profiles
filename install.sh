@@ -13,6 +13,18 @@ if [ -e ~/.bash_profile_flw ]; then
 fi
 # flw bash script end
 EOD
+
+rm -f ~/.bashrc_flw
+ln -s ~/shell-profiles/dot_bashrc_flw ~/.bashrc_flw
+
+sed -i '/# flw bash script begin/,/# flw bash script end/d' ~/.bashrc
+cat <<EOD >> ~/.bashrc
+# flw bash script begin
+if [ -e ~/.bashrc_flw ]; then
+    . ~/.bashrc_flw
+fi
+# flw bash script end
+EOD
 # }}}
 
 # 安装 vim 配置文件 {{{
