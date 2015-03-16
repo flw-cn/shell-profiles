@@ -17,7 +17,7 @@
 
 # 使用方法
 
-1. 下载本项目
+1. 运行下面这行命令来下载本项目
 
   > git clone https://github.com/flw-cn/shell-profiles
 
