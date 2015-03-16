@@ -36,7 +36,8 @@ echo > ~/.vimrc
 sed -i '/" flw vim script begin/,/" flw vim script end/d' ~/.vimrc ~/.vimrc
 sed -i '1i" flw vim script begin\nif filereadable( expand( "$HOME/.vimrc_flw" ) )\n    source ~/.vimrc_flw\nendif\n" flw vim script end' ~/.vimrc
 
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+rm -rf ~/.vim/bundle/Vundle.vim
+git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
 # }}}
 
 # 安装 screen 配置文件 {{{
