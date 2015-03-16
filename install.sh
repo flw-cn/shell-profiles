@@ -38,6 +38,8 @@ sed -i '1i" flw vim script begin\nif filereadable( expand( "$HOME/.vimrc_flw" ) 
 
 rm -rf ~/.vim/bundle/Vundle.vim
 git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
+
+vim -c VundleInstall -c quit
 # }}}
 
 # 安装 screen 配置文件 {{{
