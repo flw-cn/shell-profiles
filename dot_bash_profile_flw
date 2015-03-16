@@ -11,5 +11,5 @@ if [ $sysname == 'Linux' ]; then
 elif [ $sysname == 'Darwin' ]; then
     exec screen -D RR
 else
-    # NOTHING TO DO
+    true # NOTHING TO DO
 fi
