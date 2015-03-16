@@ -1,0 +1,55 @@
+# vim: set ft=screen:
+shell /bin/bash
+term xterm-color
+
+bind k focus up
+bind j focus down
+bind H focus left
+bind L focus right
+bind t focus top
+bind b focus bottom
+bind ^f layout select fullscreen
+bind ^v layout select vsplit
+bind ^x layout select xsplit
+bind ^s layout select split
+bind ^q layout new temp
+bind w layout show
+bind ^w layout show
+bindkey ^_ layout next
+bind = mousetrack on
+bind - mousetrack off
+bind l windowlist
+
+bind + resize =
+bind _ resize max
+
+vbell off
+bell_msg "Error!"
+vbell_msg "Error!"
+
+altscreen on
+startup_message off
+
+defscrollback 2048
+deflogin on
+
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm*|rxvt* 'ti@:te@:Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' XT
+# erase background with current bg color
+defbce on
+
+# Add this to your .bashrc:
+# #   export PROMPT_COMMAND='echo -n -e "\033k\033\\"'
+shelltitle '$ |bash'
+
+hardstatus on
+hardstatus alwayslastline
+hardstatus string '%{.bR} %H %{.bM}%m/%d %c |%{.bg} %-w%{.bY}%n %t%{-}%+w %=%{..G} %l '
+caption splitonly
+caption string ' %{.wb}%n %t '
+windowlist string '%4n %t [%h]%=%f'
+
+zmodem catch

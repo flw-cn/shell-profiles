@@ -1,0 +1,80 @@
+# vim: set ft=sh:
+# 加入 Go 语言环境的支持
+if [ `uname` == 'Darwin' ]; then
+    export GOROOT=/usr/local/opt/go/libexec
+else
+    export GOROOT=/usr/local/go
+fi
+
+export GOPATH=$HOME/go
+
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+if [ `uname` == 'Darwin' ]; then
+    # Haskell Platform for MAC
+    export PATH=$HOME/Library/Haskell/bin:$PATH
+fi
+# 有一些实用工具虽然位于 /usr/sbin or /sbin，但实际上普通用户也可以用，比如 ifconfig。
+export PATH=/usr/sbin:/sbin:/usr/local/sbin:$PATH
+# 用户目录下的 bin 目录也应当加入 PATH 环境变量，最后是当前目录。
+export PATH=$PATH:$HOME/bin:.
+
+export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig
+
+# EDITOR 是非常古老的环境变量了，一些软件需要通过它来决定使用何种编辑器编辑资料
+export EDITOR=vim
+
+# time 命令的输出格式有时候需要调整一下
+export TIME='\nreal\t%es\nuser\t%Us\nsys\t%Ss'
+
+# 关闭终端的 Ctrl+s Ctrl+q 流控功能。有时候不小心按了 Ctrl+s 会导致终端假死，其实是流控了。
+stty -ixoff -ixon
+
+# 让 bash 记录 history 时能够记录下时间戳。
+export HISTTIMEFORMAT="%F %T "
+
+# 解决 man 手册出现乱码的问题，以及 less 命令显示中文出现乱码的问题。
+export PAGER='less -isMrf'
+export LESS='-isMrf'
+
+# 配合 screen 的设置
+export PROMPT_COMMAND='echo -n -e "\033k\033\\"'
+
+# PS1 的设置
+# export PS1='\[\033[48;5;00m\]\[\033[01;33m\]\u\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+# ArchLinux 风格的色彩斑斓的命令行提示符
+export PS1="\[\033[0;37m\]\342\224\214\342\224\200\$(code=\$?; [[ \$code == 0 ]] || echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200[\[\033[0;31m\]\$code\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[0;31m\]\u@\h'; else echo '\[\033[38;5;226m\]\u\[\033[0;37m\]@\[\033[0;96m\]\h'; fi)\[\033[0;37m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;37m\]]\n\[\033[0;37m\]\\\`-----------> $(if [[ ${EUID} == 0 ]]; then echo '#'; else echo '$'; fi) \[\033[0m\]"
+
+# 设置别名以简化打开 erlang 手册
+# alias erlman='LANG=C erl -man'
+
+if [ `uname` == 'Darwin' ]; then
+    export CLICOLOR=1
+    export LSCOLORS=gxfxcxdxbxegedabagacad
+    alias tree='tree -L 4'
+    alias vi='vim'
+    alias todo='open /Applications/Reminders.app'
+    alias ical='open /Applications/Calendar.app'
+fi
+
+alias ll='ls -l'
+alias g2u='iconv --from gb18030 --to utf8'
+umask 022
+set -o vi
+
+# 在安装了 plenv 的情况下，自动启动 plenv 环境。
+if [ -d ~/.plenv/bin ]; then
+    export PATH="$HOME/.plenv/bin:$HOME/app/sbin:$HOME/app/bin:$PATH"
+    eval "$(plenv init -)"
+fi
+
+# 在存在 workdir 目录的情况下，自动进入 workdir 目录。
+if [ -d ~/work ]; then
+    cd ~/work
+elif [ -d ~/workdir ]; then
+    cd ~/workdir
+elif [ -d ~/workspace ]; then
+    cd ~/workspace
+elif [ -d ~/study ]; then
+    cd ~/study
+fi

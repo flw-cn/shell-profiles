@@ -1,0 +1,15 @@
+# vim: set ft=sh:
+
+sysname=`uname -s`
+if [ $sysname == 'Linux' ]; then
+    # Linux 下如果登录 shell 不是 screen，就自动启动 screen。
+    ppid=`awk '{print $4}' /proc/$$/stat`
+    name=`cat /proc/$ppid/cmdline | awk '{print $1}'`
+    if [ $name == 'sshd:' ]; then
+        exec screen -D -RR
+    fi
+elif [ $sysname == 'Darwin' ]; then
+    exec screen -D RR
+else
+    # NOTHING TO DO
+fi
