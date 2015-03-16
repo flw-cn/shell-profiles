@@ -2,12 +2,13 @@
 # vim: set fdm=marker:
 
 # 安装 bash 启动脚本 {{{
+rm -f ~/.bash_profile_flw
 ln -s ~/shell_profiles/dot_bash_profile_flw ~/.bash_profile_flw
 
 sed -i '/# flw bash script begin/,/# flw bash script end/d' ~/.bash_profile
 cat <<EOD >> ~/.bash_profile
 # flw bash script begin
-if [ -f ~/.bash_profile_flw ]; then
+if [ -e ~/.bash_profile_flw ]; then
     . ~/.bash_profile_flw
 fi
 # flw bash script end
@@ -15,6 +16,7 @@ EOD
 # }}}
 
 # 安装 vim 配置文件 {{{
+rm -f ~/.vimrc_flw
 ln -s ~/shell_profiles/dot_vimrc_flw ~/.vimrc_flw
 mkdir -p ~/.vim/colors && cp -f flwcolor.vim ~/.vim/colors/
 rm -f ~/.vimrc
