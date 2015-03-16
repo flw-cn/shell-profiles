@@ -8,17 +8,17 @@ bind H focus left
 bind L focus right
 bind t focus top
 bind b focus bottom
-bind ^f layout select fullscreen
-bind ^v layout select vsplit
-bind ^x layout select xsplit
-bind ^s layout select split
-bind ^q layout new temp
-bind w layout show
-bind ^w layout show
-bindkey ^_ layout next
-bind = mousetrack on
-bind - mousetrack off
 bind l windowlist
+# bind ^f layout select fullscreen
+# bind ^v layout select vsplit
+# bind ^x layout select xsplit
+# bind ^s layout select split
+# bind ^q layout new temp
+# bind w layout show
+# bind ^w layout show
+# bindkey ^_ layout next
+# bind = mousetrack on
+# bind - mousetrack off
 
 bind + resize =
 bind _ resize max
