@@ -27,21 +27,6 @@ fi
 EOD
 # }}}
 
-# 安装 vim 配置文件 {{{
-rm -f ~/.vimrc_flw
-ln -s ~/shell-profiles/dot_vimrc_flw ~/.vimrc_flw
-mkdir -p ~/.vim/colors && cp -f flwcolor.vim ~/.vim/colors/
-rm -f ~/.vimrc
-echo > ~/.vimrc
-sed -i '/" flw vim script begin/,/" flw vim script end/d' ~/.vimrc ~/.vimrc
-sed -i '1i" flw vim script begin\nif filereadable( expand( "$HOME/.vimrc_flw" ) )\n    source ~/.vimrc_flw\nendif\n" flw vim script end' ~/.vimrc
-
-rm -rf ~/.vim/bundle/Vundle.vim
-git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
-
-vim -c VundleInstall -c quit
-# }}}
-
 # 安装 screen 配置文件 {{{
 rm -f ~/.screenrc
 ln -s ~/shell-profiles/dot_screenrc ~/.screenrc
@@ -65,4 +50,19 @@ ln -s ~/shell-profiles/dot_guile ~/.guile
 # 安装 sbclrc 启动脚本 {{{
 rm -f ~/.sbclrc
 ln -s ~/shell-profiles/dot_sbclrc ~/.sbclrc
+# }}}
+
+# 安装 vim 配置文件 {{{
+rm -f ~/.vimrc_flw
+ln -s ~/shell-profiles/dot_vimrc_flw ~/.vimrc_flw
+mkdir -p ~/.vim/colors && cp -f flwcolor.vim ~/.vim/colors/
+rm -f ~/.vimrc
+echo > ~/.vimrc
+sed -i '/" flw vim script begin/,/" flw vim script end/d' ~/.vimrc ~/.vimrc
+sed -i '1i" flw vim script begin\nif filereadable( expand( "$HOME/.vimrc_flw" ) )\n    source ~/.vimrc_flw\nendif\n" flw vim script end' ~/.vimrc
+
+rm -rf ~/.vim/bundle/Vundle.vim
+git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
+
+vim +'VundleInstall!' +qall
 # }}}
