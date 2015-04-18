@@ -290,6 +290,24 @@ endif
 
 "}}}
 
+" 快速切换头文件和源代码 -----------------------------{{{
+function! FlwSwitchHeaderAndSource()
+    let basename = expand( "%:r" )
+    let ext = expand( "%:e" )
+    if ( ext == "c" || ext == "cpp" ) && filereadable( basename . ".h" )
+        execute "edit " . basename . ".h"
+    elseif ( ext == "c" || ext == "cpp" ) && filereadable( basename . ".hpp" )
+        execute "edit " . basename . ".hpp"
+    elseif ( ext == "h" || ext == "hpp" ) && filereadable( basename . ".c" )
+        execute "edit " . basename . ".c"
+    elseif ( ext == "h" || ext == "hpp" ) && filereadable( basename . ".cpp" )
+        execute "edit " . basename . ".cpp"
+    endif
+endfunction
+
+autocmd FileType c,cpp nmap <silent> <F2> :call FlwSwitchHeaderAndSource()<CR>
+"}}}
+
 " 聪明的映射 -----------------------------{{{
 
 " 跟移动光标一样整体移动行。
