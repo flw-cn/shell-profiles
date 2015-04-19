@@ -290,6 +290,7 @@ endif
 
 "}}}
 
+" 非常好用！
 " 快速切换头文件和源代码 -----------------------------{{{
 function! FlwSwitchHeaderAndSource()
     let basename = expand( "%:r" )
@@ -495,6 +496,42 @@ let wiki1.nested_syntaxes = {'python': 'python', 'c': 'c', 'sh': 'sh', 'perl': '
 
 " 定义 wiki 列表
 let g:vimwiki_list = [wiki1]
+
+" 下面是对 VimWiki 打的一个补丁，目的是为了让它能够更好地支持 Markdown
+" 链接语法。官方的插件不支持 [文章]() 这样的内部链接语法。
+" 而这种语法是唯一能够打通 VimWiki 和 Jekyll 的关键。
+" 注意这个补丁只有当 wiki 语法是 Markdown 时才应该启用。
+" 可以通过下面的 autocmd 来控制。
+function! FlwPatchVimwiki()
+    let g:vimwiki_rxFlwMarkdownLinkPrefix = '['
+    let g:vimwiki_rxFlwMarkdownLinkSuffix = ']()'
+    " [DESCRIPTION]()
+    " let g:vimwiki_MarkdownLinkTemplate = g:vimwiki_rxMarkdownLinkPrefix . '__LinkUrl__'.
+    "      \ g:vimwiki_rxMarkdownLinkSuffix
+
+    let magic_chars = '.*[]\^$'
+    let valid_chars = '[^\\]'
+
+    let g:vimwiki_rxFlwMarkdownLinkPrefix = escape(g:vimwiki_rxFlwMarkdownLinkPrefix, magic_chars)
+    let g:vimwiki_rxFlwMarkdownLinkSuffix = escape(g:vimwiki_rxFlwMarkdownLinkSuffix, magic_chars)
+    let g:vimwiki_rxFlwMarkdownLinkUrl = valid_chars.'\{-}'
+
+    " [DESCRIPTION]()
+    let g:vimwiki_rxFlwMarkdownLink = g:vimwiki_rxFlwMarkdownLinkPrefix.
+          \ g:vimwiki_rxFlwMarkdownLinkUrl . g:vimwiki_rxFlwMarkdownLinkSuffix
+
+    let g:vimwiki_rxFlwMarkdownLinkMatchUrl = g:vimwiki_rxFlwMarkdownLinkPrefix.
+          \ '\zs' . g:vimwiki_rxFlwMarkdownLinkUrl . '\ze' . g:vimwiki_rxFlwMarkdownLinkSuffix
+
+    let g:vimwiki_rxFlwMarkdownLinkMatcDescr = g:vimwiki_rxFlwMarkdownLinkMatchUrl
+
+    let g:vimwiki_rxWikiLink = g:vimwiki_rxFlwMarkdownLink
+    let g:vimwiki_rxWikiLinkMatchUrl = g:vimwiki_rxFlwMarkdownLinkMatchUrl
+    let g:vimwiki_rxWikiLinkMatchDescr = g:vimwiki_rxFlwMarkdownLinkMatcDescr
+endfunction
+
+" 可以通过注释掉下面这行代码来取消应用补丁。
+autocmd FileType vimwiki call FlwPatchVimwiki()
 " }}}
 
 " taglist ----{{{
