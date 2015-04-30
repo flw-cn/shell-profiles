@@ -159,7 +159,7 @@ Plugin 'godlygeek/tabular'
 
 " 试用中的插件
 " if ( has("unix") ) | Plugin 'Valloric/YouCompleteMe' | endif
-if ( has("unix") ) | Plugin 'Shougo/neocomplete.vim' | endif
+if ( has("unix") && has("lua") ) | Plugin 'Shougo/neocomplete.vim' | endif
 Plugin 'dgryski/vim-godef'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
