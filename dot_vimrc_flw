@@ -163,6 +163,8 @@ if ( has("unix") && has("lua") ) | Plugin 'Shougo/neocomplete.vim' | endif
 Plugin 'dgryski/vim-godef'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
+
+Plugin 'kien/ctrlp.vim'
 "Plugin 'SirVer/ultisnips'
 
 " 所有的 Plugin 都必须写在 vundle#begin() 和 vundle#end() 之间。
@@ -290,8 +292,8 @@ endif
 
 "}}}
 
-" 非常好用！
 " 快速切换头文件和源代码 -----------------------------{{{
+" 非常好用！
 function! FlwSwitchHeaderAndSource()
     let basename = expand( "%:r" )
     let ext = expand( "%:e" )
@@ -326,6 +328,8 @@ autocmd FileType perl vmap <silent> c :<BS><BS><BS><BS><BS>let FlwSearchBak=@/\|
 autocmd FileType perl vmap <silent> C :<BS><BS><BS><BS><BS>let FlwSearchBak=@/\|'<,'>s/^#//gi\|call histdel("search", -1)\|let @/ = FlwSearchBak<CR>
 autocmd FileType vim vmap <silent> c :<BS><BS><BS><BS><BS>let FlwSearchBak=@/\|'<,'>s/^/"/gi\|call histdel("search", -1)\|let @/ = FlwSearchBak<CR>
 autocmd FileType vim vmap <silent> C :<BS><BS><BS><BS><BS>let FlwSearchBak=@/\|'<,'>s/^"//gi\|call histdel("search", -1)\|let @/ = FlwSearchBak<CR>
+autocmd FileType javascript,c,cpp vmap <silent> c :<BS><BS><BS><BS><BS>let FlwSearchBak=@/\|'<,'>s/^/\/\//gi\|call histdel("search", -1)\|let @/ = FlwSearchBak<CR>
+autocmd FileType javascript,c,cpp vmap <silent> C :<BS><BS><BS><BS><BS>let FlwSearchBak=@/\|'<,'>s/^\/\///gi\|call histdel("search", -1)\|let @/ = FlwSearchBak<CR>
 
 " }}}
 
@@ -516,7 +520,7 @@ function! FlwPatchVimwiki()
     let g:vimwiki_rxFlwMarkdownLinkSuffix = escape(g:vimwiki_rxFlwMarkdownLinkSuffix, magic_chars)
     let g:vimwiki_rxFlwMarkdownLinkUrl = valid_chars.'\{-}'
 
-    " [DESCRIPTION]()
+    " 1. [DESCRIPTION]()
     let g:vimwiki_rxFlwMarkdownLink = g:vimwiki_rxFlwMarkdownLinkPrefix.
           \ g:vimwiki_rxFlwMarkdownLinkUrl . g:vimwiki_rxFlwMarkdownLinkSuffix
 
@@ -582,6 +586,12 @@ imap <silent><C-j> <Plug>(neocomplcache_snippets_expand)
 
 " Godef ----{{{
 let g:godef_split=3
+" }}}
+
+" CtrlP ----{{{
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 " }}}
 
 "}}}

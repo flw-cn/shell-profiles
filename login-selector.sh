@@ -1,8 +1,7 @@
 #!/bin/sh
 
-DIALOG='dialog'
-DIALOGOPTS='--ascii-lines --backtitle 主机登录器==========by-flw--2015.05.08'
-export DIALOGOPTS
+BACKTITLE='主机登录器==========by-flw--2015.05.08'
+DIALOG="dialog --backtitle $BACKTITLE"
 
 DIALOG_MENU=`mktemp /tmp/dialog.XXXXXX`
 DIALOG_SELECT=`mktemp /tmp/dialog.XXXXXX`
@@ -21,7 +20,7 @@ dialog_select=`cat $DIALOG_SELECT`
 if [ "x$dialog_select" == "x" ]; then
     true # NOTHING TO DO
 elif [ "x$dialog_select" == "x0" ]; then
-    exec screen -D -RR
+    exec screen -U -D -RR
 else
     host=`head -n $dialog_select $DIALOG_MENU 2>/dev/null | tail -1 | awk '{print $2}' | perl -lne 'print /\[(.+)\]:(\d+)/ ? "$1 -p $2" : $_'`
 

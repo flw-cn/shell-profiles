@@ -9,7 +9,7 @@ if [ $sysname == 'Linux' ]; then
         exec screen -D -RR
     fi
 elif [ $sysname == 'Darwin' ]; then
-    exec screen -D -RR
+    ~/shell-profiles/login-selector.sh
 else
     true # NOTHING TO DO
 fi
