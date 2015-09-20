@@ -12,9 +12,13 @@ set expandtab
 set shiftwidth=4
 " TAB 键按 4 空格对齐
 set tabstop=4
-
 set softtabstop=4
 set smarttab
+
+if ( has("mac") )
+    " 对于 Unicode 字符中，宽度含义有歧义的字符，统统显示为双字节宽
+    set ambiwidth=double
+endif
 
 " 和系统剪切板交互
 set clipboard=unnamed
