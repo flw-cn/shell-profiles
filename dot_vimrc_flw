@@ -160,6 +160,8 @@ Plugin 'ervandew/supertab'
 " 仍在积累使用经验当中的插件
 Plugin 'mattn/emmet-vim'
 Plugin 'godlygeek/tabular'
+Plugin 'mxw/vim-jsx'
+Plugin 'groenewege/vim-less'
 
 " 试用中的插件
 " if ( has("unix") ) | Plugin 'Valloric/YouCompleteMe' | endif
@@ -367,10 +369,10 @@ nmap <silent> <TAB>     <C-W>w
 nmap <silent> <S-TAB>   <C-W>p
 
 " 用上下左右键来调整窗口大小
-nmap <silent> <Left>  <C-W><:unlet! t:flwwinlayout<CR>
-nmap <silent> <Right> <C-W>>:unlet! t:flwwinlayout<CR>
-nmap <silent> <Up>    <C-W>+:unlet! t:flwwinlayout<CR>
-nmap <silent> <Down>  <C-W>-:unlet! t:flwwinlayout<CR>
+" nmap <silent> <Left>  <C-W><:unlet! t:flwwinlayout<CR>
+" nmap <silent> <Right> <C-W>>:unlet! t:flwwinlayout<CR>
+" nmap <silent> <Up>    <C-W>+:unlet! t:flwwinlayout<CR>
+" nmap <silent> <Down>  <C-W>-:unlet! t:flwwinlayout<CR>
 
 " 窗口放大缩小，模仿 Turbo C 风格的。
 function! FlwSaveOrRestoreLayout()
@@ -481,6 +483,7 @@ autocmd FileType haskell,lhaskell,yaml setlocal shiftwidth=2 tabstop=2 softtabst
 " 这里只列出插件的其它设置
 
 " Vimwiki ----{{{
+highlight VimwikiBold cterm=bold,reverse
 let g:vimwiki_use_mouse         = 1     " 支持鼠标
 let g:vimwiki_camel_case        = 0     " 不再采用骆驼表示法自动识别条目
 let g:vimwiki_folding           = 1     " 开启折叠功能
@@ -593,7 +596,7 @@ let g:godef_split=3
 " }}}
 
 " CtrlP ----{{{
-let g:ctrlp_map = '<c-p>'
+let g:ctrlp_map = '<Right>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 " }}}
