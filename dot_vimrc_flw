@@ -160,7 +160,10 @@ Plugin 'ervandew/supertab'
 " 仍在积累使用经验当中的插件
 Plugin 'mattn/emmet-vim'
 Plugin 'godlygeek/tabular'
-Plugin 'mxw/vim-jsx'
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'jsx/jsx.vim'
+
 Plugin 'groenewege/vim-less'
 
 " 试用中的插件
@@ -170,8 +173,14 @@ Plugin 'dgryski/vim-godef'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
 
+Plugin 'Shutnik/jshint2.vim'
+let g:jshint2_command = 'jsxhint'
+
 Plugin 'kien/ctrlp.vim'
 "Plugin 'SirVer/ultisnips'
+
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 
 " 所有的 Plugin 都必须写在 vundle#begin() 和 vundle#end() 之间。
 call vundle#end()            " 必须
@@ -490,6 +499,7 @@ let g:vimwiki_folding           = 1     " 开启折叠功能
 let g:vimwiki_fold_lists        = 1     " 列表也要折叠
 let g:vimwiki_hl_headers        = 1     " 章节标题高亮支持
 let g:vimwiki_hl_cb_checked     = 1     " 已完成的 TODO 项变灰
+let g:markdown_enable_spell_checking = 0 " 关闭 VimWiki 中的 MarkDown 的拼写检查
 
 let g:vimwiki_ext2syntax = {'.mkd': 'markdown', '.wiki': 'default'}
 
