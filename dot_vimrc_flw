@@ -622,7 +622,11 @@ function! FlwHelpHelper( where )
     let l:word = expand( "<cWORD>" )
 
     " 再取出疑似函数名/模块名的部分和疑似方法的部分
-    let l:lists = matchlist( l:word, "\\([_a-zA-Z0-9:]\\+\\)\\(->\\([_a-zA-Z0-9]\\+\\)\\)\\?" )
+    if &ft == "go"
+        let l:lists = matchlist( l:word, "\\([_a-zA-Z0-9:/.]\\+\\)\\(->\\([_a-zA-Z0-9]\\+\\)\\)\\?" )
+    else
+        let l:lists = matchlist( l:word, "\\([_a-zA-Z0-9:]\\+\\)\\(->\\([_a-zA-Z0-9]\\+\\)\\)\\?" )
+    endif
 
     let l:name = l:lists[1]
     let l:method = l:lists[3]
