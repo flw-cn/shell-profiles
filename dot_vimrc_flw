@@ -15,7 +15,8 @@ set tabstop=4
 set softtabstop=4
 set smarttab
 
-if ( has("mac") )
+let os=substitute(system('uname'), '\n', '', '')
+if os == 'Darwin' || os == 'Mac'
     " 对于 Unicode 字符中，宽度含义有歧义的字符，统统显示为双字节宽
     set ambiwidth=double
 endif
@@ -148,7 +149,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " 久经考验的插件，喜欢得不得了
 Plugin 'vimwiki/vimwiki'
-Plugin 'gabrielelana/vim-markdown'      " 貌似没有 markdown 插件 vimwiki 反而工作的更好？
+" Plugin 'gabrielelana/vim-markdown'      " 貌似没有 markdown 插件 vimwiki 反而工作的更好？
 Plugin 'mattn/calendar-vim'
 Plugin 'yegappan/mru'
 Plugin 'jlanzarotta/bufexplorer'
@@ -169,6 +170,9 @@ Plugin 'groenewege/vim-less'
 " 试用中的插件
 " if ( has("unix") ) | Plugin 'Valloric/YouCompleteMe' | endif
 if ( has("unix") && has("lua") ) | Plugin 'Shougo/neocomplete.vim' | endif
+" Plugin 'vim-scripts/asciidoc.vim'
+" Plugin 'vim-scripts/TVO--The-Vim-Outliner-with-asciidoc-supp'
+Plugin 'ap/vim-css-color'
 Plugin 'dgryski/vim-godef'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
@@ -181,6 +185,13 @@ Plugin 'kien/ctrlp.vim'
 
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
+
+" Plugin 'Yggdroot/indentLine'
+
+Plugin 'daveyarwood/vim-alda'
+
+Plugin 'vim-scripts/DrawIt'
+" Plugin 'wincent/command-t'
 
 " 所有的 Plugin 都必须写在 vundle#begin() 和 vundle#end() 之间。
 call vundle#end()            " 必须
@@ -203,6 +214,9 @@ if has("gui_running")
 else
     colorscheme flwcolor
 endif
+
+" 修正和 tmux 配合时背景色刷新不正常的问题
+set t_ut=
 
 " 对其它颜色对修正
 autocmd FileType html hi link htmlHead Normal
@@ -305,6 +319,8 @@ else
     nmap <silent> <F12>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
 
+nmap <silent> <F10> :tabe ~/vimwiki/程序员英语.mkd<CR>G
+
 "}}}
 
 " 快速切换头文件和源代码 -----------------------------{{{
@@ -334,6 +350,9 @@ nmap <C-k> mz:m-2<cr>`z
 vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
+" Insert 模式下，用 Ctrl+S 来保存文档
+imap <C-S> <C-O>:w<CR>
+
 " Visual 模式下用 TAB 来缩进代码
 vmap <silent> <TAB>     >gv
 vmap <silent> <S-TAB>   <gv
@@ -345,6 +364,15 @@ autocmd FileType vim vmap <silent> c :<BS><BS><BS><BS><BS>let FlwSearchBak=@/\|'
 autocmd FileType vim vmap <silent> C :<BS><BS><BS><BS><BS>let FlwSearchBak=@/\|'<,'>s/^"//gi\|call histdel("search", -1)\|let @/ = FlwSearchBak<CR>
 autocmd FileType javascript,c,cpp vmap <silent> c :<BS><BS><BS><BS><BS>let FlwSearchBak=@/\|'<,'>s/^/\/\//gi\|call histdel("search", -1)\|let @/ = FlwSearchBak<CR>
 autocmd FileType javascript,c,cpp vmap <silent> C :<BS><BS><BS><BS><BS>let FlwSearchBak=@/\|'<,'>s/^\/\///gi\|call histdel("search", -1)\|let @/ = FlwSearchBak<CR>
+
+if os == 'Darwin' || os == 'Mac'
+    " 在 Mac 下映射 Ctrl+D 为语音朗读光标下的单词
+    nmap <silent> <C-D> :call system("say -v Tom",expand("<cword>"))<CR>
+    " 映射 v 模式下的 M 键预览 mermaid 代码
+    vmap <silent> M :call writefile( getline("'<", "'>"), "/tmp/foo.mmd" )<CR>:echo "正在生成并打开图片 ..."<CR>:call system("mermaid /tmp/foo.mmd -o /tmp/ && open /tmp/foo.mmd.png")<CR>:echo "完成。"<CR>
+endif
+
+autocmd FileType alda nmap <silent> <F5> :call system("alda play --file " . expand("%"))<CR>
 
 " }}}
 
@@ -553,6 +581,10 @@ endfunction
 
 " 可以通过注释掉下面这行代码来取消应用补丁。
 autocmd FileType vimwiki call FlwPatchVimwiki()
+
+" For Plugin 'Yggdroot/indentLine'
+let g:indentLine_color_term = 239
+
 " }}}
 
 " taglist ----{{{
@@ -599,6 +631,24 @@ let g:SuperTabDefaultCompletionType = '<C-X><C-O>'      " 设置 SuperTab 使其
 " Plugin key-mappings.
 imap <silent><C-j> <Plug>(neocomplcache_snippets_expand)
 
+" 输入小数点或者箭头时自动出现补全提示
+" autocmd FileType perl,c,cpp inoremap > ><C-X><C-U><C-P>
+" autocmd FileType c,cpp inoremap . .<C-X><C-U><C-P>
+
+" 定义各语法文件的字典
+" let g:NeoComplCache_DictionaryFileTypeLists = {
+"       \ 'default'   : '',
+" \ }
+
+" 定义关键字的模式
+" if !exists( 'g:NeoComplCache_KeywordPatterns' )
+"   let g:NeoComplCache_KeywordPatterns = {}
+" endif
+
+" 缺省关键字的模式是 [a-zA-Z_][a-zA-Z0-9_]*
+" let g:NeoComplCache_KeywordPatterns['default'] = '\h\w*'
+
+" let g:NeoComplCache_SnippetsDir = $HOME.'/snippets'
 "}}}
 
 " Godef ----{{{

@@ -1,6 +1,6 @@
 # vim: set ft=screen:
 shell /bin/bash
-term xterm-color
+term screen-256color
 
 bind k focus up
 bind j focus down
@@ -37,9 +37,11 @@ deflogin on
 # allow bold colors - necessary for some reason
 attrcolor b ".I"
 # tell screen how to set colors. AB = background, AF=foreground
-termcapinfo xterm*|rxvt* 'ti@:te@:Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' XT
+termcapinfo xterm* 'ti@:te@:Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' XT
 # erase background with current bg color
 defbce on
+
+defencoding UTF-8
 
 # Add this to your .bashrc:
 # #   export PROMPT_COMMAND='echo -n -e "\033k\033\\"'
@@ -47,6 +49,9 @@ shelltitle '$ |bash'
 
 hardstatus on
 hardstatus alwayslastline
+# backtick 可以用来调用外部命令，在这里把电池电量给取出来 backtick 1 60 60 sh -c "pmset -g batt | egrep -o '\d+%'"
+# backtick 1 60 60 sh -c "pmset -g batt | egrep -o '\d+%'"
+# hardstatus string '%{.bR} %H %{.bM}%m/%d %c |%{.bg} %-w%{.bY}%n %t%{-}%+w %=%{..G} %l | %1` '
 hardstatus string '%{.bR} %H %{.bM}%m/%d %c |%{.bg} %-w%{.bY}%n %t%{-}%+w %=%{..G} %l '
 caption splitonly
 caption string ' %{.wb}%n %t '

@@ -1,4 +1,9 @@
-# vim: set ft=gitconfig:
-[user]
-	name = flw
-	email = flw@cpan.org
+[alias]
+    lc = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local
+    lc2 = log --graph --all --oneline --decorate
+[color]
+	ui = true
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = No

@@ -18,7 +18,7 @@ awk '{print $1}' ~/.ssh/known_hosts |   # 历史上曾经登录过的主机
 dialog_select=`cat $DIALOG_SELECT`
 
 if [ "x$dialog_select" == "x" ]; then
-    true # NOTHING TO DO
+    exec $SHELL
 elif [ "x$dialog_select" == "x0" ]; then
     exec screen -U -D -RR
 else
