@@ -1,9 +1,23 @@
 [alias]
     lc = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local
     lc2 = log --graph --all --oneline --decorate
+    st = status
+    rv = remote -v
+    cb = checkout -b
+    co = checkout
+    ba = branch -a
+    b = branch
+    redate = "! f(){ if [ \"x$1\" == \"x\" ]; then echo \"Usage: git redate <BEGIN-commit> <END-commit>\"; exit; fi; git filter-branch -f --env-filter 'export GIT_AUTHOR_DATE=`date -R`; export GIT_COMMITTER_DATE=\"$GIT_AUTHOR_DATE\"; sleep 1' "$1".."$2"; }; f"
 [color]
 	ui = true
+    diff    = auto
+    branch  = auto
+    status  = auto
+    grep    = auto
 [diff]
 	tool = vimdiff
 [difftool]
 	prompt = No
+[merge]
+	conflictstyle = diff3
+	tool = vimdiff

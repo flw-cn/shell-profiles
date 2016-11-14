@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # vim: set fdm=marker:
 
 # 安装 bash 启动脚本 {{{

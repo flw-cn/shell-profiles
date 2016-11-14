@@ -193,6 +193,12 @@ Plugin 'daveyarwood/vim-alda'
 Plugin 'vim-scripts/DrawIt'
 " Plugin 'wincent/command-t'
 
+Plugin 'tpope/vim-fugitive'
+Plugin 'junegunn/gv.vim'
+
+Plugin 'airblade/vim-gitgutter'
+Plugin 'jreybert/vimagit'
+
 " 所有的 Plugin 都必须写在 vundle#begin() 和 vundle#end() 之间。
 call vundle#end()            " 必须
 filetype plugin indent on    " 必须
