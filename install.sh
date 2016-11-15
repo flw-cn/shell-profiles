@@ -27,6 +27,11 @@ fi
 EOD
 # }}}
 
+# 安装 zsh 启动脚本 {{{
+rm -f ~/.zshrc
+ln -s ~/.flw-shell-profiles/dot_zshrc ~/.zshrc
+# }}}
+
 # 安装 screen 配置文件 {{{
 rm -f ~/.screenrc
 ln -s ~/.flw-shell-profiles/dot_screenrc ~/.screenrc
