@@ -1,6 +1,6 @@
 [alias]
-    lc = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local
-    lc2 = log --graph --all --oneline --decorate
+    lc = log --graph --all --oneline --decorate
+    lc2 = !git log --graph --pretty=format:'%C(yellow)%h%Creset - %C(bold black)(%cr) %C(bold cyan)%d%Creset %s %C(bold black)%ci %C(bold blue)%an%Creset' --abbrev-commit --date=local
     st = status
     rv = remote -v
     cb = checkout -b
