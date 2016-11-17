@@ -1,3 +1,7 @@
+[core]
+	quotepath = false
+	excludesfile = ~/.gitignore
+
 [alias]
     lc = log --graph --all --oneline --decorate
     lc2 = !git log --graph --pretty=format:'%C(yellow)%h%Creset - %C(bold black)(%cr) %C(bold cyan)%d%Creset %s %C(bold black)%ci %C(bold blue)%an%Creset' --abbrev-commit --date=local

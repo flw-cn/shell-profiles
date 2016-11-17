@@ -1,0 +1,7 @@
+foo
+bar
+out
+out.log
+out[123]
+out[123].log
+.DS_Store

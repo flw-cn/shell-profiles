@@ -31,7 +31,7 @@ export PATH=\
 ":/bin"\
 ":/usr/local/opt/go/libexec/bin"\
 ":/Users/flw/Library/Haskell/bin"\
-":/Users/flw/go/bin"\
+":/Users/flw/.go/bin"\
 ":/Users/flw/bin"\
 ":."
 
@@ -67,3 +67,5 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
+
+export GOPATH=~/.go
