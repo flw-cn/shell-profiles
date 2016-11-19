@@ -209,7 +209,11 @@ filetype plugin indent on    " 必须
 " 启动语法识别
 syntax on
 
-if has("gui_running")
+if has("gui_macvim")
+    set macligatures
+    set guifont=Fira\ Code\ Light:h16
+    colorscheme darkblue
+elseif has("gui_running")
     colorscheme darkblue
 
     hi Visual                       guibg=Yellow

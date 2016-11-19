@@ -42,6 +42,12 @@ rm -f ~/.tmux.conf
 ln -s ~/.flw-shell-profiles/dot_tmux.conf ~/.tmux.conf
 # }}}
 
+# 安装 docker 配置文件 {{{
+mkdir -p ~/.docker
+rm -f ~/.docker/config.json
+ln -s ~/.flw-shell-profiles/docker-config.json ~/.docker/config.json
+# }}}
+
 # 安装 readline 配置文件 {{{
 rm -f ~/.inputrc
 ln -s ~/.flw-shell-profiles/dot_inputrc ~/.inputrc

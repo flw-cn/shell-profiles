@@ -455,3 +455,5 @@ autocmd FileType pod syntax region podExampleCode start="^\s" end="\ze\n\S" cont
 autocmd FileType pod hi podVerbatimLine ctermbg=Grey
 
 nmap <F3> :colorscheme flwcolor<CR>
+
+let g:colors_name = "flwcolor"
