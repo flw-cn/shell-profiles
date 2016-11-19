@@ -667,6 +667,10 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 " }}}
 
+" vim-go --- {{{
+let g:go_fmt_command = "goimports"
+" }}}
+
 "}}}
 
 " 自己写的插件 -----------------------------------{{{
