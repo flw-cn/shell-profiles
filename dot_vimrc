@@ -1,7 +1,0 @@
-"let g:user_zen_expandabbr_key = '<TAB>'
-
-" flw vim script begin
-if filereadable( expand( "$HOME/.vimrc_flw" ) )
-    source ~/.vimrc_flw
-endif
-" flw vim script end
