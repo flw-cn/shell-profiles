@@ -1,27 +1,49 @@
 [core]
-	quotepath = false
-	excludesfile = ~/.gitignore
+    quotepath = false
+	excludesfile = /Users/flw/.gitignore
 
 [alias]
-    lc = log --graph --all --oneline --decorate
-    lc2 = !git log --graph --pretty=format:'%C(yellow)%h%Creset - %C(bold black)(%cr) %C(bold cyan)%d%Creset %s %C(bold black)%ci %C(bold blue)%an%Creset' --abbrev-commit --date=local
+    lc = "!f() { git log --graph --oneline --decorate $* $(git branch | cut -c2-); }; f"
+    lc2 = "!f() { git log --graph --pretty=format:'%C(yellow)%h%Creset - %C(bold black)(%cr) %C(bold cyan)%d%Creset %s %C(bold black)%ci %C(bold blue)%an%Creset' --abbrev-commit --date=local $* $(git branch | cut -c2-); }; f"
+    lc3 = "!f() { git log --graph --pretty=format:'%C(yellow)%h%Creset - %C(bold black)(%ar) %C(bold cyan)%d%Creset %s %C(bold black)%ai %C(bold blue)%an%Creset' --abbrev-commit --date=local $* $(git branch | cut -c2-); }; f"
     st = status
     rv = remote -v
     cb = checkout -b
     co = checkout
-    ba = branch -a
     b = branch
-    redate = "! f(){ if [ \"x$1\" == \"x\" ]; then echo \"Usage: git redate <BEGIN-commit> <END-commit>\"; exit; fi; git filter-branch -f --env-filter 'export GIT_AUTHOR_DATE=`date -R`; export GIT_COMMITTER_DATE=\"$GIT_AUTHOR_DATE\"; sleep 1' "$1".."$2"; }; f"
+    ba = branch -a
+    bv = "!git branch -vv --color=always | sed 's/behind [0-9]\\+/\\x1b[48;5;196m\\x1b[38;5;230m&\\x1b[m/; s/ahead [0-9]\\+/\\x1b[48;5;34m\\x1b[38;5;230m&\\x1b[m/'"
+    redateall = "! f(){ if [ \"x$1\" == \"x\" ]; then echo \"Usage: git redate <BEGIN-commit> <END-commit>\"; exit; fi; git filter-branch -f --env-filter 'export GIT_AUTHOR_DATE=`date -R`; export GIT_COMMITTER_DATE=\"$GIT_AUTHOR_DATE\"; sleep 1' "$1".."$2"; }; f"
+    redate = "!d=$1 && shift && GIT_COMMITTER_DATE=\"$d\" git commit --amend --date \"$d\""
 [color]
-	ui = true
+    ui = true
     diff    = auto
     branch  = auto
     status  = auto
     grep    = auto
+[color "branch"]
+    upstream = 207
+[commit]
+    template = ~/.gitmessage
+	gpgsign = true
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [difftool]
-	prompt = No
+    prompt = No
 [merge]
-	conflictstyle = diff3
-	tool = vimdiff
+    conflictstyle = diff3
+    tool = vimdiff
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
+[branch]
+    autosetuprebase = always
+[test]
+    verify=make
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
