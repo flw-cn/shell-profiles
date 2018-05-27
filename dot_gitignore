@@ -5,3 +5,4 @@ out.log
 out[123]
 out[123].log
 .DS_Store
+.project.vim
