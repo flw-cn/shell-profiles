@@ -27,9 +27,11 @@ fi
 EOD
 # }}}
 
-# 安装 zsh 启动脚本 {{{
+# 安装 oh-my-zsh 以及 zsh 启动脚本 {{{
 rm -f ~/.zshrc
 ln -s ~/.flw-shell-profiles/dot_zshrc ~/.zshrc
+git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+ln -s ~/.flw-shell-profiles/flw.zsh-theme ~/.oh-my-zsh/custom/themes/flw.zsh-theme
 # }}}
 
 # 安装 screen 配置文件 {{{
