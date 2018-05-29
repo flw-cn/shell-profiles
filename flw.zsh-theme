@@ -17,13 +17,34 @@ function current_work_directory {
     echo $(pwd | sed -e "s,^$HOME,~,")
 }
 
-PROMPT='
+function my_git_prompt_info {
+    GIT=$(git_prompt_info)
+    if [ "x$GIT" = "x" ]; then
+        echo ""
+        return
+    fi
+    if [ $COLUMNS -gt 80 ]; then
+        echo " $GIT"
+    else
+        echo "\ngit: $GIT"
+    fi
+}
+
+function flw_prompt {
+    if [ "x$DEMO" = "x" ]; then
+        echo "
 $(text_with_color %n 226) \
 at $(text_with_color %m cyan) \
-in $(text_with_color $(current_work_directory) green) \
-$(git_prompt_info)\
+in $(text_with_color $(current_work_directory) green)\
+$(my_git_prompt_info)\
 %f%b%k%{$reset_color%}
-$ '
+$ "
+    else
+        echo '$ '
+    fi
+}
+
+PROMPT='$(flw_prompt)'
 
 # Git 可用组件及其主题配置:
 # git_current_user_name:    用户名（无配置项）
