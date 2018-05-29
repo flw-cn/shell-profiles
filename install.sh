@@ -42,6 +42,8 @@ ln -s ~/.flw-shell-profiles/dot_screenrc ~/.screenrc
 # 安装 tmux 配置文件 {{{
 rm -f ~/.tmux.conf
 ln -s ~/.flw-shell-profiles/dot_tmux.conf ~/.tmux.conf
+rm -f ~/.tmux-copy-mode.conf
+ln -s ~/.flw-shell-profiles/dot_tmux-copy-mode.conf ~/.tmux-copy-mode.conf
 # }}}
 
 # 安装 docker 配置文件 {{{
