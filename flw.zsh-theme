@@ -31,11 +31,17 @@ function my_git_prompt_info {
 }
 
 function flw_prompt {
-    if [ "x$DEMO" = "x" ]; then
+    if [ "$DEMO" = "" ]; then
+        cwd=$(current_work_directory)
+        sep=""
+        ((len = $COLUMNS - ${#cwd}))
+        if [ $len -lt 15 ]; then
+            sep="\n"
+        fi
         echo "
 $(text_with_color %n 226) \
 at $(text_with_color %m cyan) \
-in $(text_with_color $(current_work_directory) green)\
+in $sep$(text_with_color $cwd green)\
 $(my_git_prompt_info)\
 %f%b%k%{$reset_color%}
 $ "

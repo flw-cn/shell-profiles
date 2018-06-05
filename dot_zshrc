@@ -14,7 +14,7 @@ DISABLE_AUTO_TITLE="true"
 
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(git git-flow-avh gitignore gitfast svn-fast-info osx autojump fasd brew go golang docker kubectl rustup)
+plugins=(git gitignore gitfast autojump fasd brew golang docker kubectl rustup zsh-iterm-touchbar)
 
 # User configuration
 
