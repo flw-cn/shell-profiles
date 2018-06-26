@@ -3,6 +3,9 @@
 	excludesfile = /Users/flw/.gitignore
 
 [alias]
+    lp = log -p --color-words=. --color-moved=default
+    sh = show --color-words=. --color-moved=default
+    df = diff --color-words=. --color-moved=default
     lc = "!f() { git log --graph --oneline --decorate $* $(git branch | cut -c2-); }; f"
     lc2 = "!f() { git log --graph --pretty=format:'%C(yellow)%h%Creset - %C(bold black)(%cr) %C(bold cyan)%d%Creset %s %C(bold black)%ci %C(bold blue)%an%Creset' --abbrev-commit --date=local $* $(git branch | cut -c2-); }; f"
     lc3 = "!f() { git log --graph --pretty=format:'%C(yellow)%h%Creset - %C(bold black)(%ar) %C(bold cyan)%d%Creset %s %C(bold black)%ai %C(bold blue)%an%Creset' --abbrev-commit --date=local $* $(git branch | cut -c2-); }; f"

@@ -65,6 +65,9 @@ export EDITOR="vim"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gbb='git bv'
 unalias gb
+alias glp='git log -p --color-words=. --color-moved=default'
+alias gsh='git show --color-words=. --color-moved=default'
+alias gdf='git diff --color-words=. --color-moved=default'
 
 alias cping=prettyping
 
