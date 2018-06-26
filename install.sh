@@ -62,6 +62,13 @@ rm -f ~/.haskeline
 ln -s ~/.flw-shell-profiles/dot_haskeline ~/.haskeline
 # }}}
 
+# Racket 不使用 readline 而是用 libedit，另外还需要在启动时加载 xrepl {{{
+rm -f ~/.editrc
+ln -s ~/.flw-shell-profiles/dot_editrc ~/.editrc
+rm -f ~/.racketrc
+ln -s ~/.flw-shell-profiles/dot_racketrc ~/.racketrc
+# }}}
+
 # 安装 gdb 启动脚本 {{{
 rm -f ~/.gdbinit
 ln -s ~/.flw-shell-profiles/dot_gdbinit ~/.gdbinit
