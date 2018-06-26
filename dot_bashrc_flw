@@ -18,6 +18,9 @@ export PATH=/usr/sbin:/sbin:/usr/local/sbin:$PATH
 # 用户目录下的 bin 目录也应当加入 PATH 环境变量，最后是当前目录。
 export PATH=$PATH:$HOME/bin:.
 
+# fortune 及一些趣味性工具的位置可能在 games 里
+export PATH=$PATH:/usr/games:/usr/local/games
+
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig
 
 # EDITOR 是非常古老的环境变量了，一些软件需要通过它来决定使用何种编辑器编辑资料

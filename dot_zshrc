@@ -20,8 +20,8 @@ plugins=(git gitignore gitfast autojump fasd brew golang docker kubectl rustup z
 
 export PLAN9=/Users/flw/code/git/github/plan9
 export PATH=\
-"/Users/flw/.plenv/shims"\
-":/Users/flw/.plenv/bin"\
+"$HOME/.plenv/shims"\
+":$HOME/.plenv/bin"\
 ":/usr/local/sbin"\
 ":/usr/local/bin"\
 ":/usr/sbin"\
@@ -29,12 +29,13 @@ export PATH=\
 ":/usr/bin"\
 ":/bin"\
 ":/usr/local/opt/go/libexec/bin"\
-":/Users/flw/Library/Haskell/bin"\
-":/Users/flw/.go/bin"\
-":/Users/flw/.yt-go/bin"\
-":/Users/flw/.cargo/bin"\
-":/Users/flw/bin"\
-":$PLAN9/bin"\
+":$HOME/Library/Haskell/bin"\
+":$HOME/.go/bin"\
+":$HOME/.yt-go/bin"\
+":$HOME/.cargo/bin"\
+":$HOME/bin"\
+":/usr/games"\
+":/usr/local/games"\
 ":."
 
 # export MANPATH="/usr/local/man:$MANPATH"
