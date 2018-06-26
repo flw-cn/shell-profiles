@@ -29,8 +29,8 @@ vim 配置及脚本已经被单独拆分至项目 [flw.vim](https://github.com/f
 
 1. 运行下面这行命令来下载本项目
 
-  > git clone https://github.com/flw-cn/shell-profiles
+  > git clone https://github.com/flw-cn/shell-profiles ~/.flw-shell-profiles
 
 2. 安装
 
-  > cd shell-profiles; ./install.sh
+  > cd ~/.flw-shell-profiles; ./install.sh
