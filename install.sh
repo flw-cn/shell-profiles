@@ -57,6 +57,11 @@ rm -f ~/.inputrc
 ln -s ~/.flw-shell-profiles/dot_inputrc ~/.inputrc
 # }}}
 
+# Haskell 不使用 readline 而是用 haskeline，另外还要注意在 tmux 下配合修改 {{{
+rm -f ~/.haskeline
+ln -s ~/.flw-shell-profiles/dot_haskeline ~/.haskeline
+# }}}
+
 # 安装 gdb 启动脚本 {{{
 rm -f ~/.gdbinit
 ln -s ~/.flw-shell-profiles/dot_gdbinit ~/.gdbinit
