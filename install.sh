@@ -46,6 +46,11 @@ rm -f ~/.tmux-copy-mode.conf
 ln -s ~/.flw-shell-profiles/dot_tmux-copy-mode.conf ~/.tmux-copy-mode.conf
 # }}}
 
+# 安装 fzf 配置文件 {{{
+rm -f ~/.fzf.zsh
+ln -s ~/.flw-shell-profiles/dot_fzf.zsh ~/.fzf.zsh
+# }}}
+
 # 安装 docker 配置文件 {{{
 mkdir -p ~/.docker
 rm -f ~/.docker/config.json
