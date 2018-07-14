@@ -67,4 +67,6 @@ alias ubuntu='docker run --rm -it --name ubuntu --hostname ubuntu --cap-add sys_
 
 alias lf='LSCOLORS=GxfxcxdxCxegedabagacad lf'
 
+alias say10='seq 10 | gxargs -i say'
+
 fortune
