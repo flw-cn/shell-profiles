@@ -53,3 +53,9 @@
 [user]
 	name = flw
 	email = flw@cpan.org
+[url "https://github.com/golang/"]
+    insteadOf = https://golang.org/x/
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/
