@@ -16,7 +16,7 @@ fzf_preview_file=$'-m --tabstop=4 --color hl:46,hl+:46,fg+:15,bg+:238,marker:208
     --preview \'[[ $(file --mime {}) =~ binary ]] && \
         echo {} is a binary file || \
         (echo "\\x1b[1;92m" $(file {}) "\\x1b[0m"; \
-        highlight --line-numbers --line-number-length=2 --tab=4 --style anotherdark -O xterm256 -l {} || \
+        bat --color always {} || \
         head {} ) 2>/dev/null\''
 
 _fzf_complete_vim() {
@@ -28,6 +28,6 @@ _fzf_complete_vim() {
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_DEFAULT_OPTS=$fzf_preview_file
 export FZF_COMPLETION_OPTS=$fzf_preview_file
-export FZF_CTRL_R_OPTS='--reverse --preview "echo {}" --preview-window down:3:wrap'
+export FZF_CTRL_R_OPTS='--reverse --preview "echo {}" --height=100% --preview-window down:30%:wrap'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_CTRL_T_OPTS=$fzf_preview_file
