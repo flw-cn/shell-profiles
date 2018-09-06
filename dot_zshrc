@@ -13,15 +13,18 @@ DISABLE_AUTO_TITLE="true"
 # record command execution time stamp and shown in the history command output
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(git gitignore gitfast autojump fasd brew golang docker kubectl rustup tmuxinator)
+plugins=(git gitignore gitfast autojump fasd brew golang docker docker-compose docker-machine kubectl rustup tmuxinator zsh-autosuggestions zsh-syntax-highlighting zsh-apple-touchbar)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 bindkey -v
 
+bindkey 'æ' autosuggest-accept
+
 export PATH=\
 "$HOME/.plenv/shims"\
 ":$HOME/.plenv/bin"\
+":$HOME/.local/bin"\
 ":/usr/local/sbin"\
 ":/usr/local/bin"\
 ":/usr/sbin"\
@@ -38,7 +41,6 @@ export PATH=\
 ":/usr/local/games"\
 ":."
 
-
 export LANG=en_US.UTF-8
 export EDITOR="vim"
 export GPG_TTY=$(tty)
@@ -52,6 +54,8 @@ unalias gb
 alias glp='git log -p --color-words=. --color-moved=default'
 alias gsh='git show --color-words=. --color-moved=default'
 alias gdf='git diff --color-words=. --color-moved=default'
+alias glc='git lc2'
+alias glca='git lc2 --all'
 alias cping=prettyping
 alias ghist='f(){history | grep $2 | less}; f'
 
