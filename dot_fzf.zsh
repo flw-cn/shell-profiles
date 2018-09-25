@@ -27,7 +27,7 @@ _fzf_complete_vim() {
 
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_DEFAULT_OPTS=$fzf_preview_file
-export FZF_COMPLETION_OPTS=$fzf_preview_file
+export FZF_COMPLETION_OPTS=
 export FZF_CTRL_R_OPTS='--reverse --preview "echo {}" --height=100% --preview-window down:30%:wrap'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_CTRL_T_OPTS=$fzf_preview_file
