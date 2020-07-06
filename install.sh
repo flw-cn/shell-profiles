@@ -36,6 +36,7 @@ install dot_haskeline               # Haskell REPL 配置，另外还要注意�
 install dot_racketrc                # Racket 启动配置
 install dot_editrc                  # Racket REPL 配置，另外还需要在 racketrc 里加载 xrepl
 install dot_gitconfig               # Git 配置文件
+install dot_gitmessage              # Git 提交日志模版
 
 # 安装 bash 启动脚本 {{{
 touch ~/.bash_profile
